@@ -1,11 +1,11 @@
 import './App.css';
 import Appx from './components/App/App';
-import Login from './components/Login/Login';
+import Task from './components/Tasks/Task';
 
 function App() {
   return (
     <div className="App">
-      <Appx />
+      <Task/>
     </div>
   );
 }
