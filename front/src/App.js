@@ -5,7 +5,7 @@ import Task from './components/Tasks/Task';
 function App() {
   return (
     <div className="App">
-      <Task/>
+      <Appx/>
     </div>
   );
 }
