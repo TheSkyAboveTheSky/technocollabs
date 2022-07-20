@@ -11,6 +11,7 @@ import TodoList from '../TodoList/TodoList';
 import Form from '../Form/Form';
 import Header from '../Header/Header';
 import Task from '../Tasks/Task';
+import AddTask from '../addTask/AddTask';
 import { Fragment } from 'react';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <ProtectedRoutes path='/todo-add' component={Form} />
             <ProtectedRoutes path='/users' component={Admin} />
             <Route path='/taskboard' component={Task} />
+            <Route path="/add-task" component={AddTask} />
             <Route path='/unAuthorized' component={UnAuthorized} />
           </div>
         </ Fragment>

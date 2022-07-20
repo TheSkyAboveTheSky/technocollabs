@@ -5,7 +5,6 @@ import './jquery-nestable.css';
 import './bootstrap-datepicker.min.css';
 import { useEffect, useState } from 'react';
 import axios from '../Axios/axios';
-import Navbar from '../Navbar/Navbar';
 import dateFormat from 'dateformat';
 export const Task = () => {
   const [tasks, setTasks] = useState([]);
@@ -26,15 +25,15 @@ export const Task = () => {
                         className={window.location.pathname === '/taskboard' ? 'nav-link active' : 'nav-link'}
                         data-toggle="tab" href="/taskboard">Task List</a></li>
               <li className="nav-item"><a
-                        className={window.location.pathname === '/todo-add' ? 'nav-link active' : 'nav-link'}
-                        style={window.location.pathname === '/todo-add' ? { borderTop: "3px solid red" } : { color: "grey" }}
-                        data-toggle="tab" href="/todo-add">Add Task</a></li>
+                        className={window.location.pathname === '/add-task' ? 'nav-link active' : 'nav-link'}
+                        style={window.location.pathname === '/add-task' ? { borderTop: "3px solid red" } : { color: "grey" }}
+                        data-toggle="tab" href="/add-task">Add Task</a></li>
           </ul>
         </div>
     <div>
     </div>
-    <table className="table table-hover table-vcenter mb-0 table_custom spacing8 text-nowrap">
-                        <thead>
+    <table className="table spacing8 text-nowrap">
+                        <thead className="thead-light">
                           <tr>
                             <th>#</th>
                             <th>Task</th>
@@ -47,6 +46,19 @@ export const Task = () => {
                         <tbody>
                           {
                             tasks.map((task,index) => {
+                              let  priority = "";
+                              let progress = "";
+                              if (task.priority === "High")
+                              {
+                                priority = "tag-red";
+                              }
+                              else if (task.priority === "Low")
+                              {
+                                priority = "tag-green";
+                              }
+                              else {
+                                  priority = "tag-orange";
+                              }
                               return (
                                     <tr>
                                       <td>{++index}</td>
@@ -61,7 +73,7 @@ export const Task = () => {
                                           <div className="text-info">Due Date : {dateFormat(task.due,"dd-mm-yyyy")}</div>
                                       </td>
                                       <td>
-                                          <span className="tag tag-blue">{task.priority}</span>
+                                          <span className={"tag " + priority}>{task.priority}</span>
                                       </td>
                                       <td>
                                         <div className="clearfix">
@@ -69,7 +81,7 @@ export const Task = () => {
                                           <div className="float-right"><small className="text-muted">Progress</small></div>
                                         </div>
                                         <div className="progress">
-                                          <div className="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style={{width:task.progress}}></div>
+                                          <div className="progress-bar bg-green" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style={{width: task.progress+"%"}}></div>
                                         </div>
                                       </td>
                                     </tr>
