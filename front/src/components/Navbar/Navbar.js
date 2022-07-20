@@ -17,7 +17,6 @@ class Navbar extends Component {
                         data-toggle="tab" href="/todo-add">Add Todo</a>
                     </li>
                 </ul>
-
             </div>
         );
     }
