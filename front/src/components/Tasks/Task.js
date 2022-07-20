@@ -6,6 +6,7 @@ import './bootstrap-datepicker.min.css';
 import { useEffect, useState } from 'react';
 import axios from '../Axios/axios';
 import Navbar from '../Navbar/Navbar';
+import dateFormat from 'dateformat';
 export const Task = () => {
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
@@ -51,7 +52,7 @@ export const Task = () => {
                                       <h6 className="mb-0">{task.team}</h6>
                                     </td>
                                     <td>
-                                        <div className="text-info">Start: 3 Jun 2019</div>
+                                        <div className="text-info">Start: {dateFormat(task.due,"dddd-mmmm-yyyy")}</div>
                                         <div className="text-pink">End: 15 Jun 2019</div>
                                     </td>
                                     <td>

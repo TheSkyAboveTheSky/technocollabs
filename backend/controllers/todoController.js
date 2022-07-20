@@ -46,7 +46,8 @@ const addNewTask = asynchandler(async (req, res) => {
         team: req.body.team,
         description: req.body.description,
         due: req.body.due,
-        avatar: req.body.avatar
+        avatar: req.body.avatar,
+        progress: req.body.progress
     })
     res.status(200).send(`hi ${req.body.name}`)
 })
